@@ -2,3 +2,14 @@ body {
   font-family: Helvetica;
   background: #00ff90;
 }
+
+header{
+  font-size: 20vh;  
+  transform: rotate(-10deg);
+  font-family: Courier New;
+  text-align: center;
+}
+
+div{
+  padding-left: 2vw;
+}
