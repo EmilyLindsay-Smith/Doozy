@@ -1,3 +1,33 @@
+This is a To-Do List app called Doozy created with React by Emily Lindsay-Smith
+
+Current Functionality:
+- take user name
+- take task item and render to bullet point list
+
+Functionality to Develop:
+- buttons to remove/strike through list items
+- categorise items into groups
+- UI aspects 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
