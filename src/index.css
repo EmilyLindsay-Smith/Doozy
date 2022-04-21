@@ -10,6 +10,64 @@ header{
   text-align: center;
 }
 
-div{
-  padding-left: 2vw;
+ul {padding: 0px; margin: 0px;}
+
+.inputtask{
+ position: relative;
+ padding: 12px 8px 12px 40px;
 }
+li {
+  cursor: pointer;
+  position: relative;
+  padding: 12px 8px 12px 40px;
+  background: #fff;
+  font-size: 14px;
+  transition: 0.2s;
+  
+/*Make items unselectable */
+
+-webkit-user-select:none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+
+}
+
+.listItemClass:hover{
+  background: #808080;
+}
+
+.checked {
+  text-decoration: line-through;
+  color: #C0C0C0;
+  background-color: #DCDCDC;
+
+}
+
+.checked::before {
+  content: '';
+  position: absolute;
+  border-color: #fff;
+  border-style: solid;
+  border-width: 0 2px 2px 0;
+  top: 10px;
+  left: 16px;
+  transform: rotate(45deg);
+  height: 15px;
+  width: 7px;
+}
+
+.delete {
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 12px 12px 12px 12px;
+  cursor: pointer;
+  background-color: #fff;
+  border-width: 0px;
+}
+
+.submit {
+ position: relative;
+}
+.delete:hover{background-color: #f44336; color: white;}

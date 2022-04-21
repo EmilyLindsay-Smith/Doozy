@@ -17,6 +17,7 @@ class ControlledForm extends React.Component{
     super(props);
    }
    
+
   render() {
     const items = this.props.submit;
     const listCategories = [...new Set(items.map((item,index) => item[0]))];
@@ -26,11 +27,12 @@ class ControlledForm extends React.Component{
 	const lists = items.filter((item,index) => item[0] == listCategories[i])
         const listItems = lists.map(
           (item, index) => 
-          <li key={index}>
+          <li key={index} className='listItemClass'>
           {item[1]}
-          <button value={item} onClick={this.props.onClick}>Delete Me! </button>
+          <button className='delete' value={item} onClick={this.props.onClick}> x </button>
           </li>
           );
+                    
     	const htmlItems = (
 		<div>
     		<h2> Doozy List: {listCategories[i]} </h2>
@@ -40,15 +42,36 @@ class ControlledForm extends React.Component{
     	 htmlOutput.push(htmlItems);
      };
 
+   const tasks = document.querySelectorAll('.listItemClass');
+   tasks.forEach(task => {
+     task.addEventListener('click', function (event) {
+	task.classList.add('checked')
+	//task.setAttribute('style', 'text-decoration: line-through; color:silver; background-color: gray');
+	//task.className={task.className == "listItemClass" ? "listItemClass checked" : "listItemClass"};
+	//console.log("toggle")
+	//task.toggleClass('checked')
+	/*
+        if (task.classList.length == 1){
+          console.log('not present')
+	  task.classList.add('checked')
+        }else{
+          console.log('prepsent')
+          */
+  	 // task.classList.remove('checked')
+  	
+       });
+       });
+
     return(
      <div>
       <form onSubmit={this.props.onSubmit}>
         <input 
+          class= 'inputtask'
       	  placeholder = 'Category: To Do List Item'
           value = {this.props.value} 
           onChange = {this.props.onChange}
          />
-        <button type='submit'>
+        <button class='submit' type='submit'>
           Submit!
         </button>
       </form>
@@ -92,6 +115,9 @@ class ToDoItem extends React.Component {
     const submissions = this.state.submit.slice()
     const input = this.state.value
     const myValue = input.split(':')
+    if (myValue.length == 1){
+	myValue.unshift('')
+    }
     this.setState({
       submit: submissions.concat([[myValue[0],myValue[1]]]),
       value: ''
@@ -107,8 +133,7 @@ class ToDoItem extends React.Component {
 	  submit: myValue
 	})
    }
-
-    
+ 
   render() {
 	const start = (this.state.name == 'TestName')
 	const appOutput = []
@@ -134,8 +159,10 @@ class ToDoItem extends React.Component {
         		onChange={this.handleItemChange}
         		onSubmit={this.handleSubmit}
         		onClick={this.handleClick}
-         	       />
-    			<p>You have {this.state.submit.length} Doozy tasks left to do! </p>
+			/>
+			
+         	       	<p>You have {this.state.submit.length} Doozy tasks left to do! </p>
+			<p> You have {document.getElementsByClassName("listItemClass").length} to do </p>
 			</div>
    		)
     	}
